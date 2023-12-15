@@ -12,6 +12,7 @@ export default () => {
             Back to home
           </Link>
           <p>{import.meta.env.TOP_LEVEL_DOMAIN}</p>
+          <p>{import.meta.env.VITE_API_URL}</p>
         </p>
       </div>
     </div>
