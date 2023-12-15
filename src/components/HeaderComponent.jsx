@@ -7,7 +7,7 @@ export default function () {
   const navigate = useNavigate()
   async function handleLogout() {
     await customFetch(`${import.meta.env.VITE_API_URL}/logout`)
-    // cookies.remove('access_token')
+    cookies.remove('access_token')
     navigate('/login')
   }
   return (
