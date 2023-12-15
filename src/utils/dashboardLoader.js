@@ -4,7 +4,13 @@ import customFetch from '@/utils/customFetch'
 
 export async function dashboardLoader() {
   const apiUrl = import.meta.env.VITE_API_URL
-  const allUserData = await customFetch(`${apiUrl}/user`)
+  let allUserData = null
+  try {
+    allUserData = await customFetch(`${apiUrl}/user`)
+  } catch (e) {
+    console.log(e.message)
+    throw new Error(e.message)
+  }
   //   console.log(allUserData)
   return { allUserData }
 }
