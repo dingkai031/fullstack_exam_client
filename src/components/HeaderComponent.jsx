@@ -6,8 +6,10 @@ export default function () {
   const cookies = new Cookies()
   const navigate = useNavigate()
   async function handleLogout() {
-    await customFetch(`${import.meta.env.VITE_API_URL}/logout`)
+    const result = await customFetch(`${import.meta.env.VITE_API_URL}/logout`)
     cookies.remove('access_token')
+    console.log(result)
+    console.log(cookies.getAll())
     navigate('/login')
   }
   return (
