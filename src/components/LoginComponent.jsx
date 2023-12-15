@@ -31,7 +31,10 @@ export default function () {
     }
     const { exp } = jwtDecode(jwtToken)
     const cookies = new Cookies()
-    cookies.set('access_token', jwtToken, { expires: new Date(exp * 1000) })
+    cookies.set('access_token', jwtToken, {
+      expires: new Date(exp * 1000),
+      domain: import.meta.env.VITE_API_URL,
+    })
 
     navigate('/')
   }
