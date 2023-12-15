@@ -33,7 +33,6 @@ export default function () {
     const cookies = new Cookies()
     cookies.set('access_token', jwtToken, {
       expires: new Date(exp * 1000),
-      domain: 'http://www.google.com',
     })
 
     navigate('/')
