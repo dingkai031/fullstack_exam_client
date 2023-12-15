@@ -33,7 +33,7 @@ export default function () {
     const cookies = new Cookies()
     cookies.set('access_token', jwtToken, {
       expires: new Date(exp * 1000),
-      domain: import.meta.env.VITE_API_URL,
+      domain: import.meta.env.TOP_LEVEL_DOMAIN,
     })
 
     navigate('/')
