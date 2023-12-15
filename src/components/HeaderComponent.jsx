@@ -6,11 +6,12 @@ export default function () {
   const cookies = new Cookies()
   const navigate = useNavigate()
   async function handleLogout() {
-    const result = await customFetch(`${import.meta.env.VITE_API_URL}/logout`)
-    cookies.remove('access_token')
-    console.log(result)
-    console.log(cookies.getAll())
-    navigate('/login')
+    await customFetch(`${import.meta.env.VITE_API_URL}/logout`)
+    cookies.remove('access_token', {
+      path: '/',
+      domain: import.meta.env.VITE_TOP_LEVEL_DOMAIN,
+    })
+    return navigate('/login')
   }
   return (
     <header className="px-4 py-2 shadow-lg">
