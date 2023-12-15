@@ -16,7 +16,7 @@ export default function () {
     let jwtToken = null
     try {
       const result = await customFetch(
-        `${import.meta.url.VITE_API_URL}/login`,
+        `${import.meta.env.VITE_API_URL}/login`,
         { email, password },
         'POST',
       )
