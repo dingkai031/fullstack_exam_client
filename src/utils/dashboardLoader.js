@@ -5,6 +5,6 @@ import customFetch from '@/utils/customFetch'
 export async function dashboardLoader() {
   const apiUrl = import.meta.env.VITE_API_URL
   const allUserData = await customFetch(`${apiUrl}/user`)
-  console.log(allUserData)
+  //   console.log(allUserData)
   return { allUserData }
 }
