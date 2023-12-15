@@ -8,8 +8,8 @@ export async function dashboardLoader() {
   try {
     allUserData = await customFetch(`${apiUrl}/user`)
   } catch (e) {
-    console.log(e.message)
-    throw new Error(e.message)
+    console.log(e)
+    throw new Error(e)
   }
   //   console.log(allUserData)
   return { allUserData }
