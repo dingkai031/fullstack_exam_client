@@ -11,7 +11,6 @@ export default () => {
           <Link to="/" className="text-blue-600 underline">
             Back to home
           </Link>
-          <p>{import.meta.env.VITE_TOP_LEVEL_DOMAIN}</p>
         </p>
       </div>
     </div>

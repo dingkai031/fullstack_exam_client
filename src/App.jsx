@@ -5,10 +5,14 @@ import DashboardLayout from '@/pages/DashboardLayout'
 import LoginPage from '@/pages/LoginPage'
 import SignupPage from '@/pages/SignupPage'
 import DahsboardPage from '@/pages/DahsboardPage'
+import VerifyEmailPage from '@/pages/VerifyEmailPage'
+import UserProfilePage from '@/pages/UserProfilePage'
 import ErrorPage from '@/pages/ErrorPage'
 
 import { authGuard, unAuthGuard } from '@/utils/auth'
 import { dashboardLoader } from '@/utils/dashboardLoader'
+import { verifyEmailLoader } from '@/utils/verifyEmailLoader'
+import { userProfileLoader } from '@/utils/userProfileLoader'
 
 const router = createBrowserRouter([
   {
@@ -22,6 +26,11 @@ const router = createBrowserRouter([
         element: <DahsboardPage />,
         loader: dashboardLoader,
       },
+      {
+        path: 'user-profile',
+        element: <UserProfilePage />,
+        loader: userProfileLoader,
+      },
     ],
   },
   {
@@ -33,6 +42,11 @@ const router = createBrowserRouter([
     path: '/signup',
     element: <SignupPage />,
     loader: unAuthGuard,
+  },
+  {
+    path: '/verify-email/:emailVerifyId',
+    element: <VerifyEmailPage />,
+    loader: verifyEmailLoader,
   },
 ])
 

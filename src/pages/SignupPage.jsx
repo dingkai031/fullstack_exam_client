@@ -27,7 +27,7 @@ export default function () {
             </button>
           </div>
           <div className="text-end">
-            <Link className="text-sm text-blue-600 underline" to="/">
+            <Link className="text-sm text-blue-600 underline" to="/login">
               Login
             </Link>
           </div>

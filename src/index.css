@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input {
+  @apply rounded-sm bg-slate-100 p-2 transition-colors duration-200 focus-visible:bg-slate-300 focus-visible:outline-none;
+}

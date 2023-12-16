@@ -63,9 +63,6 @@ export default () => {
               <th scope="col" className="px-6 py-3">
                 Logout Date
               </th>
-              <th scope="col" className="px-6 py-3">
-                Action
-              </th>
             </tr>
           </thead>
           <tbody>
@@ -83,11 +80,10 @@ export default () => {
                   </td>
                   <td className="px-6 py-4">{userData.total_login}</td>
                   <td className="px-6 py-4">
-                    {typeof userData.last_logout_date !== 'null'
+                    {userData.last_logout_date
                       ? new Date(userData.last_logout_date).toLocaleString()
                       : "Haven't logout"}
                   </td>
-                  <td className="px-6 py-4">Reset Password</td>
                 </tr>
               ))
             ) : (
