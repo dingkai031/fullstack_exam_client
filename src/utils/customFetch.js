@@ -9,6 +9,11 @@ export default async function (url, body = {}, method = 'GET') {
   if (Object.keys(body).length > 0) fetchOption.body = JSON.stringify(body)
   const response = await fetch(url, fetchOption)
   const result = await response.json()
-  if (!response.ok) throw new Error(result.message)
+  if (!response.ok) {
+    // throw new Error(result.message)
+    const error = new Error(result.message || 'Failed to fetch')
+    error.response = result
+    throw error
+  }
   return result
 }

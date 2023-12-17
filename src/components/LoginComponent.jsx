@@ -22,12 +22,20 @@ export default function () {
       )
       jwtToken = result.token
     } catch (err) {
-      return Swal.fire({
-        title: 'Error!',
-        text: err.message,
-        icon: 'error',
-        confirmButtonText: 'Try again',
-      })
+      if (err.response.status === 'unverified_email') {
+        return navigate('/resend-email', {
+          state: {
+            email,
+          },
+        })
+      } else {
+        return Swal.fire({
+          title: 'Error!',
+          text: err.message,
+          icon: 'error',
+          confirmButtonText: 'Try again',
+        })
+      }
     }
     const { exp } = jwtDecode(jwtToken)
     const cookies = new Cookies()

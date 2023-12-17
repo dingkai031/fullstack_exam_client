@@ -5,8 +5,9 @@ import DashboardLayout from '@/pages/DashboardLayout'
 import LoginPage from '@/pages/LoginPage'
 import SignupPage from '@/pages/SignupPage'
 import DahsboardPage from '@/pages/DahsboardPage'
-import VerifyEmailPage from '@/pages/VerifyEmailPage'
 import UserProfilePage from '@/pages/UserProfilePage'
+import VerifyEmailPage from '@/pages/VerifyEmailPage'
+import ResendEmailPage from '@/pages/ResendEmailPage'
 import ErrorPage from '@/pages/ErrorPage'
 
 import { authGuard, unAuthGuard } from '@/utils/auth'
@@ -47,6 +48,12 @@ const router = createBrowserRouter([
     path: '/verify-email/:emailVerifyId',
     element: <VerifyEmailPage />,
     loader: verifyEmailLoader,
+  },
+  {
+    path: '/resend-email',
+    element: <ResendEmailPage />,
+    errorElement: <ErrorPage />,
+    loader: unAuthGuard,
   },
 ])
 
