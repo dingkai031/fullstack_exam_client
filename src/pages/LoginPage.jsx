@@ -1,10 +1,12 @@
 import Login from '@/components/LoginComponent'
 import customFetch from '@/utils/customFetch'
 import { Link } from 'react-router-dom'
-import { GoogleLogin } from '@react-oauth/google'
 import { jwtDecode } from 'jwt-decode'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
+
+import { GoogleLogin } from '@react-oauth/google'
+import FacebookLogin from '@greatsumini/react-facebook-login'
 
 import Cookies from 'universal-cookie'
 
@@ -46,9 +48,6 @@ export default function () {
   }
   const navigate = useNavigate()
 
-  FB.getLoginStatus(function (response) {
-    console.log(response)
-  })
   return (
     <div className="flex min-h-screen">
       <div className="flex-1 bg-slate-400 max-lg:hidden lg:w-1/2">
@@ -71,10 +70,18 @@ export default function () {
                 console.log('Login Failed')
               }}
             />
-            <button className="flex w-full items-center justify-center gap-x-2 rounded-md px-4  py-2 text-xl shadow-md  transition-colors duration-300 hover:bg-slate-200">
-              <FaSquareFacebook />
-              Login with Facebook
-            </button>
+            <FacebookLogin
+              appId={import.meta.env.VITE_FACEBOOK_APP_ID}
+              onSuccess={(response) => {
+                console.log('Login Success!', response)
+              }}
+              onFail={(error) => {
+                console.log('Login Failed!', error)
+              }}
+              onProfileSuccess={(response) => {
+                console.log('Get Profile Success!', response)
+              }}
+            />
           </div>
           <div className="text-end">
             <Link className="text-sm text-blue-600 underline" to="/signup">
