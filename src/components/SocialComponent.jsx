@@ -104,9 +104,9 @@ export default () => {
           console.log('Login Failed!', error)
         }}
         onProfileSuccess={(response) => {
-          handleFacebookLogin(response)
-          //   if (import.meta.env.DEV) {
-          //   }
+          if (import.meta.env.DEV) {
+            handleFacebookLogin(response)
+          }
           console.log(response)
         }}
       >
