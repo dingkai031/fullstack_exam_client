@@ -94,20 +94,18 @@ export default () => {
           console.log('Login Success!', response)
         }}
         onFail={(error) => {
-          if (import.meta.env.PROD) {
+          console.log('Login Failed!', error)
+        }}
+        onProfileSuccess={(response) => {
+          if (import.meta.env.DEV) {
+            handleFacebookLogin(response)
+          } else {
             return Swal.fire({
               text: "For now, facebook auth from production mode can't be used for unknown reascon. But it works out in development mode",
               icon: 'error',
               confirmButtonText: 'Continue',
             })
           }
-          console.log('Login Failed!', error)
-        }}
-        onProfileSuccess={(response) => {
-          if (import.meta.env.DEV) {
-            handleFacebookLogin(response)
-          }
-          console.log('on profile success function')
         }}
       >
         <FaFacebookSquare className="mr-2 text-2xl" />
