@@ -90,11 +90,23 @@ export default () => {
       <FacebookLogin
         className="flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-white transition-colors duration-300 hover:bg-blue-900"
         appId={import.meta.env.VITE_FACEBOOK_APP_ID}
+        onSuccess={(response) => {
+          console.log('Login Success!', response)
+        }}
         onFail={(error) => {
+          if (import.meta.env.PROD) {
+            return Swal.fire({
+              text: "For now, facebook auth from production mode can't be used for unknown reascon. But it works out in development mode",
+              icon: 'error',
+              confirmButtonText: 'Continue',
+            })
+          }
           console.log('Login Failed!', error)
         }}
         onProfileSuccess={(response) => {
-          //   handleFacebookLogin(response)
+          if (import.meta.env.DEV) {
+            handleFacebookLogin(response)
+          }
           console.log(response)
         }}
       >
