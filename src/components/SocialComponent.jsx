@@ -94,7 +94,8 @@ export default () => {
           console.log('Login Failed!', error)
         }}
         onProfileSuccess={(response) => {
-          handleFacebookLogin(response)
+          //   handleFacebookLogin(response)
+          console.log(response)
         }}
       >
         <FaFacebookSquare className="mr-2 text-2xl" />
