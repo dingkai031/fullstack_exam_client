@@ -107,7 +107,7 @@ export default () => {
           if (import.meta.env.DEV) {
             handleFacebookLogin(response)
           }
-          console.log(response)
+          console.log('on profile success function')
         }}
       >
         <FaFacebookSquare className="mr-2 text-2xl" />
