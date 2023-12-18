@@ -88,6 +88,7 @@ export default () => {
         size="large"
       />
       <FacebookLogin
+        version="v16.0"
         className="flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-white transition-colors duration-300 hover:bg-blue-900"
         appId={import.meta.env.VITE_FACEBOOK_APP_ID}
         onSuccess={(response) => {
