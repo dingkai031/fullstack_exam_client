@@ -2,9 +2,16 @@ import { NavLink } from 'react-router-dom'
 import Cookies from 'universal-cookie'
 import { useNavigate } from 'react-router-dom'
 import customFetch from '@/utils/customFetch'
+import { FacebookLoginClient } from '@greatsumini/react-facebook-login'
+
 export default function () {
   const cookies = new Cookies()
   const navigate = useNavigate()
+  FacebookLoginClient.getLoginStatus((res) => {
+    if (res.status === 'connected') {
+      FacebookLoginClient.logout()
+    }
+  })
   async function handleLogout() {
     await customFetch(`${import.meta.env.VITE_API_URL}/logout`)
     cookies.remove('access_token', {
@@ -13,6 +20,7 @@ export default function () {
     })
     return navigate('/login')
   }
+
   return (
     <header className="px-4 py-2 shadow-lg">
       <div className="container mx-auto flex items-center justify-between">

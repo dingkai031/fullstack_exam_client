@@ -1,9 +1,9 @@
 import Signup from '@/components/SignupComponent'
-import Cookies from 'universal-cookie'
 import { Link } from 'react-router-dom'
 
+import SocialComponent from '@/components/SocialComponent'
+
 export default function () {
-  const cookies = new Cookies()
   return (
     <div className="flex min-h-screen">
       <div className="flex-1 bg-slate-400 max-lg:hidden lg:w-1/2">
@@ -18,14 +18,7 @@ export default function () {
         <div className="w-full rounded-md p-4 shadow-md sm:w-8/12 lg:w-10/12">
           <Signup />
           <p className="mb-4 text-center">or</p>
-          <div className="mb-8 flex gap-x-4">
-            <button className="w-full rounded-md bg-blue-600 px-4 py-2 text-white transition-colors duration-300 hover:bg-blue-900">
-              google
-            </button>
-            <button className="w-full rounded-md bg-blue-600 px-4 py-2 text-white transition-colors duration-300 hover:bg-blue-900">
-              facebook
-            </button>
-          </div>
+          <SocialComponent />
           <div className="text-end">
             <Link className="text-sm text-blue-600 underline" to="/login">
               Login
